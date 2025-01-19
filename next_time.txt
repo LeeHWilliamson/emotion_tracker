@@ -1,0 +1,13 @@
+1/18/2025
+Added ability for user to give input
+Added feature that saves input and timestamp under current date
+
+Showed code to chatGPT, it recommended the following changes that were implemented
+    -Encapsulate functions
+    -Add error handling
+    -use fstrings for modifying strings instead of the silly stuff I was doing earlier
+    -Other small best practice changes
+
+Next steps....
+-Convert from text to working with JSON to allow for scalability and ability to work with NLM
+-Add feature that allows user to specify their timezone (or if lazy just use UTC time for now)
