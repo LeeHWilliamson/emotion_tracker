@@ -1,4 +1,5 @@
 import datetime
+import json
 
 #current goals
 #take string and save it to a new file named with today's date if such file does not exist
@@ -19,25 +20,40 @@ def get_current_datetime():
     return today, current_time
 
 def write_thought_to_file(file_name, thought, timestamp):
-    with open(file_name, 'a') as file:
-        file.write(f"{timestamp} --> {thought}\n")
-        print(f"Your thought has been recorded under today's date, {file_name}")
+    try:
+        with open(file_name, 'r', encoding = "utf-8") as file:
+            #file.write(f"{timestamp} --> {thought}\n")
+            data = json.load(file)
+        thought_dic = {timestamp : thought}
+        data.update(thought_dic)
+        print(json.dumps(data))
+        with open(file_name, 'w', encoding = "utf-8") as file:
+            json.dump(data, file)
+            print(f"Your thought has been recorded under today's date, {file_name}")
+    except FileNotFoundError:
+        with open(file_name, 'w', encoding = 'utf-8') as file:
+            thought_dic = {timestamp : thought}
+            print(json.dumps(thought_dic))
+            json.dump(thought_dic, file)
 def read_file(file):
     try:
-        with open(file, 'r') as reader:
-            return reader.readlines() #recall this will return a list of strings with each item being a line from the file
+        with open(file, 'r', encoding = 'utf-8') as reader:
+                data = json.load(reader)
+                return data
     except FileNotFoundError:
         return[]
 
 def main():
     today, current_time = get_current_datetime()
-    file_name = f"{today}.txt"
+    file_name = f"{today}.json"
     thought = input("Please type whatever thought is going through your mind: ") #input allows us to accept user input
     write_thought_to_file(file_name, thought, current_time)
 
     print("\nTodays thoughts are...") #recall that calling print() initiates a new line so no need for trailing \n
-    for line in read_file(file_name):
-        print(line, end="")
+    thought_to_read = read_file(file_name)
+    print(thought_to_read)
+    # for line in read_file(file_name):
+    #     print(line, end="")
 
 if __name__=="__main__":
     main()
