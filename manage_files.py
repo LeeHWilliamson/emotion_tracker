@@ -10,6 +10,7 @@ print(datetime.datetime.today()) #this will give a date according to local timez
                              #local timezone obviously based off where program is running, could correct to user's
                              #timezone by getting location user is connecting from and adding timedelta to localtime
                             #now I need to convert date to string so it can
+print("hello")
 def get_current_datetime():
     now = datetime.datetime.today() #create date object
     now_string = now.strftime('%Y-%m-%d %H:%M:%S') #convert to string
