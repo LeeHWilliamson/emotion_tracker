@@ -11,3 +11,9 @@ Showed code to chatGPT, it recommended the following changes that were implement
 Next steps....
 -Convert from text to working with JSON to allow for scalability and ability to work with NLM
 -Add feature that allows user to specify their timezone (or if lazy just use UTC time for now)
+
+1/22/2025
+I have converted from text to JSON. Next I will implement the emotion labeler
+First I think I should set up a virtual environment so I can work on this on my laptop as well. I will use Docker because it is a good tool to learn
+Will need docker image that supports tensorflow and an AMD GPU
+This weekend I need to set up docker image for this project and follow emotion label tutorial
