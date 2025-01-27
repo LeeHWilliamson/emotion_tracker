@@ -1,5 +1,7 @@
 jupyter
 tensorflow
+tf-keras
 tensorflow_datasets
 numpy
 pandas
+transformers
